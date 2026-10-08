@@ -7,8 +7,11 @@ def display_alert(event):
     print("WARNING: Suspected performance throttling detected!")
     print("========================================")
     print("Time:", event["timestamp"])
+    print("Process:", event["process_name"])
     print("CPU Usage:", event["cpu_usage"], "%")
     print("Memory Usage:", event["memory_usage"], "%")
+    print("Process CPU Usage:", event["process_cpu_usage"], "%")
+    print("Process Memory Usage:", event["process_memory_usage"], "%")
     print("========================================")
 
 
@@ -25,11 +28,20 @@ def detect_throttling(cpu_history, memory_history):
     return False
 
 
-def record_event(cpu_history, memory_history):
+def record_event(
+    cpu_history,
+    memory_history,
+    process_name,
+    process_cpu_usage,
+    process_memory_usage
+):
     event = {
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "cpu_usage": cpu_history[-1],
         "memory_usage": memory_history[-1],
+        "process_name": process_name,
+        "process_cpu_usage": process_cpu_usage,
+        "process_memory_usage": process_memory_usage,
         "event_type": "Suspected performance throttling"
     }
 
@@ -52,10 +64,20 @@ def generate_recommendation(cpu_usage, memory_usage):
 cpu_history = [93, 95, 94, 96, 92]
 memory_history = [82, 84, 83, 85, 81]
 
+process_name = "ExampleGame.exe"
+process_cpu_usage = 72
+process_memory_usage = 65
+
 result = detect_throttling(cpu_history, memory_history)
 
 if result:
-    event = record_event(cpu_history, memory_history)
+    event = record_event(
+        cpu_history,
+        memory_history,
+        process_name,
+        process_cpu_usage,
+        process_memory_usage
+    )
 
     recommendation = generate_recommendation(
         event["cpu_usage"],
