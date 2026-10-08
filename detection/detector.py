@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def detect_throttling(cpu_history, memory_history):
     if len(cpu_history) == 0 or len(memory_history) == 0:
         return False
@@ -11,12 +14,29 @@ def detect_throttling(cpu_history, memory_history):
     return False
 
 
-cpu_history = [45, 48, 97, 47, 50]
-memory_history = [55, 57, 85, 56, 54]
+def record_event(cpu_history, memory_history):
+    event = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "cpu_usage": cpu_history[-1],
+        "memory_usage": memory_history[-1],
+        "event_type": "Suspected performance throttling"
+    }
+
+    return event
+
+
+cpu_history = [93, 95, 94, 96, 92]
+memory_history = [82, 84, 83, 85, 81]
 
 result = detect_throttling(cpu_history, memory_history)
 
 if result:
+    event = record_event(cpu_history, memory_history)
+
     print("Suspected performance throttling")
+    print("Timestamp:", event["timestamp"])
+    print("CPU Usage:", event["cpu_usage"], "%")
+    print("Memory Usage:", event["memory_usage"], "%")
+    print("Event Type:", event["event_type"])
 else:
     print("No suspected throttling")
