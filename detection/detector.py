@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 def display_alert(event):
     print()
     print("========================================")
@@ -9,6 +10,7 @@ def display_alert(event):
     print("CPU Usage:", event["cpu_usage"], "%")
     print("Memory Usage:", event["memory_usage"], "%")
     print("========================================")
+
 
 def detect_throttling(cpu_history, memory_history):
     if len(cpu_history) == 0 or len(memory_history) == 0:
@@ -34,6 +36,19 @@ def record_event(cpu_history, memory_history):
     return event
 
 
+def generate_recommendation(cpu_usage, memory_usage):
+    if cpu_usage >= 90 and memory_usage >= 80:
+        return "High CPU and memory usage detected. Consider closing unnecessary background applications."
+
+    if cpu_usage >= 90:
+        return "High CPU usage detected. Consider closing unnecessary background applications."
+
+    if memory_usage >= 80:
+        return "High memory usage detected. Consider closing unnecessary background applications."
+
+    return "No optimization recommendation available."
+
+
 cpu_history = [93, 95, 94, 96, 92]
 memory_history = [82, 84, 83, 85, 81]
 
@@ -42,8 +57,14 @@ result = detect_throttling(cpu_history, memory_history)
 if result:
     event = record_event(cpu_history, memory_history)
 
+    recommendation = generate_recommendation(
+        event["cpu_usage"],
+        event["memory_usage"]
+    )
+
     print("Suspected performance throttling")
     display_alert(event)
     print("Event Type:", event["event_type"])
+    print("Recommendation:", recommendation)
 else:
     print("No suspected throttling")
