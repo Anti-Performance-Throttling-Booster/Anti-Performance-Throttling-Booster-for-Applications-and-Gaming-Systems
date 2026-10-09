@@ -42,6 +42,10 @@ def test_empty_memory_history():
     assert detect_throttling([90, 92, 91], []) is False
 
 
+def test_mismatched_history_lengths():
+    assert detect_throttling([91, 92, 93], [81, 82]) is False
+
+
 def test_record_event_contains_metrics():
     event = record_event(
         [93, 95, 94, 96, 92],
@@ -69,27 +73,39 @@ def test_record_event_has_timestamp():
     assert isinstance(timestamp, datetime)
 
 
+def test_record_event_rejects_empty_cpu_history():
+    try:
+        record_event([], [82], "ExampleGame.exe", 72, 65)
+        assert False, "Expected ValueError for empty CPU history"
+    except ValueError:
+        pass
+
+
+def test_record_event_rejects_empty_memory_history():
+    try:
+        record_event([93], [], "ExampleGame.exe", 72, 65)
+        assert False, "Expected ValueError for empty memory history"
+    except ValueError:
+        pass
+
+
 def test_high_cpu_and_memory_recommendation():
     recommendation = generate_recommendation(92, 81)
-
     assert "CPU and memory" in recommendation
 
 
 def test_high_cpu_recommendation():
     recommendation = generate_recommendation(92, 60)
-
     assert "CPU usage" in recommendation
 
 
 def test_high_memory_recommendation():
     recommendation = generate_recommendation(60, 81)
-
     assert "memory usage" in recommendation
 
 
 def test_no_recommendation_for_normal_usage():
     recommendation = generate_recommendation(50, 60)
-
     assert recommendation == "No optimization recommendation available."
 
 
@@ -105,7 +121,6 @@ def test_alert_displays_warning(capsys):
     }
 
     display_alert(event)
-
     output = capsys.readouterr().out
 
     assert "WARNING" in output
