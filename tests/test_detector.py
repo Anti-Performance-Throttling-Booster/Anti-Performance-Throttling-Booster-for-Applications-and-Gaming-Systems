@@ -1,51 +1,115 @@
+
 import sys
 import os
+from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from detection.detector import detect_throttling
+from detection.detector import (
+    detect_throttling,
+    record_event,
+    generate_recommendation,
+    display_alert,
+)
 
 
 def test_sustained_high_usage():
-    cpu_history = [93, 95, 94, 96, 92]
-    memory_history = [82, 84, 83, 85, 81]
-
-    result = detect_throttling(cpu_history, memory_history)
-
-    assert result is True
+    assert detect_throttling(
+        [93, 95, 94, 96, 92],
+        [82, 84, 83, 85, 81]
+    ) is True
 
 
 def test_normal_usage():
-    cpu_history = [45, 50, 48, 52, 47]
-    memory_history = [55, 58, 56, 54, 57]
-
-    result = detect_throttling(cpu_history, memory_history)
-
-    assert result is False
+    assert detect_throttling(
+        [45, 50, 48, 52, 47],
+        [55, 58, 56, 54, 57]
+    ) is False
 
 
-def test_single_cpu_spike():
-    cpu_history = [45, 48, 97, 47, 50]
-    memory_history = [55, 57, 85, 56, 54]
-
-    result = detect_throttling(cpu_history, memory_history)
-
-    assert result is False
+def test_single_spike():
+    assert detect_throttling(
+        [45, 48, 97, 47, 50],
+        [55, 57, 85, 56, 54]
+    ) is False
 
 
 def test_empty_cpu_history():
-    cpu_history = []
-    memory_history = [55, 58, 56]
-
-    result = detect_throttling(cpu_history, memory_history)
-
-    assert result is False
+    assert detect_throttling([], [55, 58, 56]) is False
 
 
 def test_empty_memory_history():
-    cpu_history = [90, 92, 91]
-    memory_history = []
+    assert detect_throttling([90, 92, 91], []) is False
 
-    result = detect_throttling(cpu_history, memory_history)
 
-    assert result is False
+def test_record_event_contains_metrics():
+    event = record_event(
+        [93, 95, 94, 96, 92],
+        [82, 84, 83, 85, 81],
+        "ExampleGame.exe",
+        72,
+        65
+    )
+
+    assert event["cpu_usage"] == 92
+    assert event["memory_usage"] == 81
+    assert event["process_name"] == "ExampleGame.exe"
+    assert event["process_cpu_usage"] == 72
+    assert event["process_memory_usage"] == 65
+    assert event["event_type"] == "Suspected performance throttling"
+
+
+def test_record_event_has_timestamp():
+    event = record_event([93], [82], "ExampleGame.exe", 72, 65)
+
+    timestamp = datetime.strptime(
+        event["timestamp"], "%Y-%m-%d %H:%M:%S"
+    )
+
+    assert isinstance(timestamp, datetime)
+
+
+def test_high_cpu_and_memory_recommendation():
+    recommendation = generate_recommendation(92, 81)
+
+    assert "CPU and memory" in recommendation
+
+
+def test_high_cpu_recommendation():
+    recommendation = generate_recommendation(92, 60)
+
+    assert "CPU usage" in recommendation
+
+
+def test_high_memory_recommendation():
+    recommendation = generate_recommendation(60, 81)
+
+    assert "memory usage" in recommendation
+
+
+def test_no_recommendation_for_normal_usage():
+    recommendation = generate_recommendation(50, 60)
+
+    assert recommendation == "No optimization recommendation available."
+
+
+def test_alert_displays_warning(capsys):
+    event = {
+        "timestamp": "2026-10-09 18:00:00",
+        "cpu_usage": 92,
+        "memory_usage": 81,
+        "process_name": "ExampleGame.exe",
+        "process_cpu_usage": 72,
+        "process_memory_usage": 65,
+        "event_type": "Suspected performance throttling",
+    }
+
+    display_alert(event)
+
+    output = capsys.readouterr().out
+
+    assert "WARNING" in output
+    assert "Suspected performance throttling detected" in output
+    assert "ExampleGame.exe" in output
+    assert "92" in output
+    assert "81" in output
