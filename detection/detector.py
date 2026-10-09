@@ -2,6 +2,15 @@
 from datetime import datetime
 
 
+def validate_percentage(value, name="Metric"):
+    """Validate that a metric is a numeric percentage between 0 and 100."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f"{name} must be a number between 0 and 100.")
+
+    if not 0 <= value <= 100:
+        raise ValueError(f"{name} must be between 0 and 100.")
+
+
 def detect_throttling(cpu_history, memory_history):
     """Detect sustained high CPU and memory usage."""
     if not cpu_history or not memory_history:
@@ -9,6 +18,12 @@ def detect_throttling(cpu_history, memory_history):
 
     if len(cpu_history) != len(memory_history):
         return False
+
+    for cpu in cpu_history:
+        validate_percentage(cpu, "CPU usage")
+
+    for memory in memory_history:
+        validate_percentage(memory, "Memory usage")
 
     cpu_high = all(cpu >= 90 for cpu in cpu_history)
     memory_high = all(memory >= 80 for memory in memory_history)
@@ -26,6 +41,18 @@ def record_event(
     """Record details of a suspected throttling event."""
     if not cpu_history or not memory_history:
         raise ValueError("CPU and memory histories must not be empty.")
+
+    for cpu in cpu_history:
+        validate_percentage(cpu, "CPU usage")
+
+    for memory in memory_history:
+        validate_percentage(memory, "Memory usage")
+
+    validate_percentage(process_cpu_usage, "Process CPU usage")
+    validate_percentage(process_memory_usage, "Process memory usage")
+
+    if not isinstance(process_name, str) or not process_name.strip():
+        raise ValueError("Process name must be a non-empty string.")
 
     event = {
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -57,6 +84,9 @@ def display_alert(event):
 
 def generate_recommendation(cpu_usage, memory_usage):
     """Generate a basic recommendation from the supplied metrics."""
+    validate_percentage(cpu_usage, "CPU usage")
+    validate_percentage(memory_usage, "Memory usage")
+
     if cpu_usage >= 90 and memory_usage >= 80:
         return (
             "High CPU and memory usage detected. "

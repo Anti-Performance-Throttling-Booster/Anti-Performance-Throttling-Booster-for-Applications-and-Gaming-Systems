@@ -128,3 +128,53 @@ def test_alert_displays_warning(capsys):
     assert "ExampleGame.exe" in output
     assert "92" in output
     assert "81" in output
+
+
+# Input validation tests
+
+def test_rejects_negative_cpu_usage():
+    try:
+        detect_throttling([-10, 95], [82, 84])
+        assert False, "Expected ValueError for negative CPU usage"
+    except ValueError:
+        pass
+
+
+def test_rejects_cpu_usage_above_100():
+    try:
+        detect_throttling([95, 150], [82, 84])
+        assert False, "Expected ValueError for CPU usage above 100"
+    except ValueError:
+        pass
+
+
+def test_rejects_negative_memory_usage():
+    try:
+        detect_throttling([93, 95], [-5, 84])
+        assert False, "Expected ValueError for negative memory usage"
+    except ValueError:
+        pass
+
+
+def test_rejects_text_as_cpu_usage():
+    try:
+        generate_recommendation("high", 80)
+        assert False, "Expected ValueError for text CPU usage"
+    except ValueError:
+        pass
+
+
+def test_rejects_process_cpu_usage_above_100():
+    try:
+        record_event([93], [82], "ExampleGame.exe", 120, 65)
+        assert False, "Expected ValueError for process CPU usage above 100"
+    except ValueError:
+        pass
+
+
+def test_rejects_empty_process_name():
+    try:
+        record_event([93], [82], "   ", 72, 65)
+        assert False, "Expected ValueError for an empty process name"
+    except ValueError:
+        pass
