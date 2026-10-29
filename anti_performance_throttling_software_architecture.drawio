@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-29T00:00:00.000Z" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="anti-throttling-architecture" name="Software Architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="SOFTWARE ARCHITECTURE&lt;br&gt;&lt;b&gt;Anti-Performance Throttling Booster for Applications and Gaming Systems&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="70" y="20" width="1020" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer_ui" value="1. PRESENTATION LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;dashPattern=8 4;verticalAlign=top;spacingTop=10;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="90" y="100" width="980" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="gui" value="&lt;b&gt;Desktop GUI (Python Tkinter)&lt;/b&gt;&lt;br&gt;Dashboard • Live Metrics • Start/Stop • Profiles • Alerts • Logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="140" y="145" width="880" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer_app" value="2. APPLICATION / CONTROL LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;dashPattern=8 4;verticalAlign=top;spacingTop=10;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="90" y="245" width="980" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="controller" value="&lt;b&gt;Monitoring Controller&lt;/b&gt;&lt;br&gt;Coordinates collection and refresh" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="290" width="220" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="profile" value="&lt;b&gt;Profile Manager&lt;/b&gt;&lt;br&gt;Load/select/configure profiles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="365" y="290" width="220" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="alert" value="&lt;b&gt;Alert Manager&lt;/b&gt;&lt;br&gt;Notifications and recommendations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="610" y="290" width="220" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="opt_controller" value="&lt;b&gt;Optimization Controller&lt;/b&gt;&lt;br&gt;Confirmation and safety checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="855" y="290" width="190" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer_core" value="3. CORE PROCESSING LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;dashPattern=8 4;verticalAlign=top;spacingTop=10;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="90" y="390" width="980" height="155" as="geometry"/>
+        </mxCell>
+        <mxCell id="monitor" value="&lt;b&gt;Monitoring Engine&lt;/b&gt;&lt;br&gt;CPU • RAM • Processes • Network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="445" width="205" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="detect" value="&lt;b&gt;Throttling Detection Engine&lt;/b&gt;&lt;br&gt;Rules • Thresholds • Suspected events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="355" y="445" width="205" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="cause" value="&lt;b&gt;Cause Analysis&lt;/b&gt;&lt;br&gt;Resource contention • Possible causes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="445" width="205" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="optimizer" value="&lt;b&gt;Optimization Engine&lt;/b&gt;&lt;br&gt;Eligible actions • Safe execution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="825" y="445" width="205" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer_data" value="4. SYSTEM INTERFACE &amp; DATA LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;dashPattern=8 4;verticalAlign=top;spacingTop=10;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="90" y="575" width="980" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="os" value="&lt;b&gt;Operating System Interfaces&lt;/b&gt;&lt;br&gt;Metrics/process APIs (e.g., psutil)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="625" width="330" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="storage" value="&lt;b&gt;Local Persistence&lt;/b&gt;&lt;br&gt;Profiles • Event logs • Action results" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="625" width="330" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_gui_controller" value="user commands" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="gui" target="controller">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_controller_monitor" value="start/stop + sample" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="controller" target="monitor">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_monitor_detect" value="metric samples" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="monitor" target="detect">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_detect_cause" value="suspected event" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="detect" target="cause">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cause_alert" value="cause/recommendation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="cause" target="alert">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_profile_optctrl" value="active profile" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="profile" target="opt_controller">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_alert_optctrl" value="proposed action" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="alert" target="opt_controller">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_optctrl_optimizer" value="confirmed + permitted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="opt_controller" target="optimizer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_monitor_os" value="read metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="monitor" target="os">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_optimizer_os" value="permitted process operation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="optimizer" target="os">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_profile_storage" value="read/write profiles" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="profile" target="storage">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_alert_storage" value="event records" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="alert" target="storage">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_optimizer_storage" value="action outcome" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="optimizer" target="storage">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_controller_gui" value="dashboard updates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="controller" target="gui">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_alert_gui" value="alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="alert" target="gui">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_storage_gui" value="recent logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;" edge="1" parent="1" source="storage" target="gui">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Safety rule: potentially disruptive actions require user confirmation; critical OS processes are protected. Detection reports suspected throttling when evidence is incomplete." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#d79b00;fontSize=12;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="90" y="725" width="980" height="48" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
