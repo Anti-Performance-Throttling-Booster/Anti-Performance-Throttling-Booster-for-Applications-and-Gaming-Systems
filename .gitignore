@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Member 3 - Local performance profiles
+data/profiles.json
+data/profiles.json.tmp
