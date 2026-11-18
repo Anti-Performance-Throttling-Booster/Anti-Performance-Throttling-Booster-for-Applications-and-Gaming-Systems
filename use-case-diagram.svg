@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1080" viewBox="0 0 1500 1080">
+<rect width="1500" height="1080" fill="white"/>
+<text x="750" y="42" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold">Anti-Performance Throttling Booster — UML Use-Case Diagram</text>
+<rect x="330" y="85" width="1080" height="900" rx="12" fill="none" stroke="#222" stroke-width="2"/>
+<text x="870" y="115" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">Anti-Performance Throttling Booster</text>
+<!-- Actors -->
+<g stroke="#111" stroke-width="3" fill="none">
+ <circle cx="130" cy="310" r="25"/><path d="M130 335 V425 M85 365 H175 M130 425 L90 485 M130 425 L170 485"/>
+ <circle cx="130" cy="720" r="25"/><path d="M130 745 V835 M85 775 H175 M130 835 L90 895 M130 835 L170 895"/>
+</g>
+<g font-family="Arial" font-size="18" text-anchor="middle"><text x="130" y="525">End User / Gamer</text><text x="130" y="935">Host Operating</text><text x="130" y="958">System</text></g>
+<!-- use cases -->
+<g fill="#f7fbff" stroke="#245b83" stroke-width="2" font-family="Arial" font-size="16" text-anchor="middle">
+ <ellipse cx="520" cy="190" rx="145" ry="35"/><text x="520" y="196">Start Monitoring</text>
+ <ellipse cx="850" cy="190" rx="145" ry="35"/><text x="850" y="196">Stop Monitoring</text>
+ <ellipse cx="1180" cy="190" rx="170" ry="35"/><text x="1180" y="184">View Live Metrics</text><text x="1180" y="204">(CPU, Memory, Processes)</text>
+ <ellipse cx="520" cy="330" rx="150" ry="35"/><text x="520" y="336">View Network Usage</text>
+ <ellipse cx="850" cy="330" rx="155" ry="35"/><text x="850" y="324">Detect Suspected</text><text x="850" y="344">Throttling</text>
+ <ellipse cx="1180" cy="330" rx="145" ry="35"/><text x="1180" y="336">View Alerts</text>
+ <ellipse cx="520" cy="470" rx="165" ry="35"/><text x="520" y="464">View Optimization</text><text x="520" y="484">Recommendations</text>
+ <ellipse cx="850" cy="470" rx="155" ry="35"/><text x="850" y="464">View Background</text><text x="850" y="484">Processes</text>
+ <ellipse cx="1180" cy="470" rx="150" ry="35"/><text x="1180" y="464">Select Performance</text><text x="1180" y="484">Profile</text>
+ <ellipse cx="520" cy="610" rx="155" ry="35"/><text x="520" y="604">Configure Performance</text><text x="520" y="624">Profile</text>
+ <ellipse cx="850" cy="610" rx="150" ry="35"/><text x="850" y="616">Apply Optimization</text>
+ <ellipse cx="1180" cy="610" rx="160" ry="35"/><text x="1180" y="604">Confirm Optimization</text><text x="1180" y="624">Action</text>
+ <ellipse cx="700" cy="770" rx="145" ry="35"/><text x="700" y="776">View Recent Logs</text>
+ <ellipse cx="1050" cy="770" rx="155" ry="35"/><text x="1050" y="776">Record Event / Action</text>
+</g>
+<!-- Actor associations -->
+<g stroke="#555" stroke-width="1.5" fill="none">
+ <path d="M175 365 L375 190 M175 365 L705 190 M175 365 L1010 190 M175 365 L370 330 M175 365 L695 330 M175 365 L1035 330 M175 365 L355 470 M175 365 L695 470 M175 365 L1030 470 M175 365 L365 610 M175 365 L700 610 M175 365 L1020 610 M175 365 L555 770"/>
+ <path d="M175 790 L1010 190 M175 790 L365 330 M175 790 L695 470 M175 790 L700 610"/>
+ <path d="M665 330 L1035 330" stroke-dasharray="7 5"/><path d="M1005 610 L1020 610" stroke-dasharray="7 5"/>
+ <path d="M850 365 L850 435" stroke-dasharray="7 5"/><path d="M850 505 L850 575" stroke-dasharray="7 5"/>
+ <path d="M850 645 L1000 735" stroke-dasharray="7 5"/><path d="M850 365 L1000 735" stroke-dasharray="7 5"/>
+</g>
+<g font-family="Arial" font-size="14" fill="#444">
+ <text x="880" y="405">«extend»</text><text x="900" y="555">«include»</text><text x="900" y="700">«include»</text>
+ <text x="350" y="1030">Dashed arrows indicate UML include/extend relationships. See the PlantUML source for the complete editable model.</text>
+</g>
+</svg>
